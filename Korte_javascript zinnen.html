@@ -1,0 +1,129 @@
+<DOCTYPE html>
+    <html>
+        <head>
+            <title>Kleine Javascript opdrahcten </title>
+            <link rel="stylesheet" href="Javascript.css">
+        </head>
+        <body>
+            <h1> Kleine Javascript opdrachten</h1>
+            <Article> 
+                <h2> Array</h1>
+            <script>
+
+                 var klas=["Ola","Gaby","Ali","Jacob"]
+
+                 document.write("Er zijn "+klas.length +" "+"leerlingen"+"<br>");
+                 for (namen of klas){
+                    document.write(namen+ "<br>")
+                 }
+             </script>
+               </Article>
+
+
+               <article > 
+                   <h2> Dobbelsteen</h1>
+                   <p> Refresh de scherm voor een nieuwe getal</p>
+                <script>
+                    
+                  let random=Math.ceil( Math.random()*9); 
+                  document.write (random); 
+
+                </script>
+               </article>
+
+               <article> 
+                <h2> Oppervlakte berekenen</h1>
+                <script>
+                    var lengte = 9; 
+                    var breedte=8; 
+                    var opp = lengte * breedte ; 
+    
+                    document.write("<p> De lengte is "+ lengte+ "</p>"); 
+                    document.write("<p> De breedte is "+ breedte+ "</p>"); 
+                    document.write("<p> De oppervlakte is "+ opp+ "</p>"); 
+                </script>
+               </article>
+
+               <article>
+                <h2>Kleur veranderen</h1>
+                <p> Werkt maar 1 keer</p>  
+ 
+                <button type="button" onclick="button()"> Get started</button>
+                 <script>
+
+                function button () {document.body.style.backgroundColor="lightcyan";
+                }
+
+                
+            </script>
+               </article>
+                  
+               <article>
+                <h2> Canvas poppetje bewegen</h1>
+                <p> Het poppetje beweegt 1 keer van links naar recht</p>
+
+                <canvas id="game" width="900" height="160"> </canvas>
+               <script>
+                let canvas = document.getElementById("game");
+                let context = canvas.getContext('2d');
+                let player = new Image();
+                player.src = "IMG_character_funny.jpg"
+                player.onload = draw
+                let player_position_x = 0;
+                function draw(){
+                    context.clearRect(0,0, 900,900,);
+                    context.drawImage(player, player_position_x,50, 100,100);
+                    player_position_x += 1;
+                }
+                setInterval(draw, 10);
+            </script>
+           </article>
+
+               <article> 
+                <div id="play_area">
+                <h2> Reactietijd</h1>
+                <p> Werkt maar 1 keer <br> Vind je reactie tijd in de console <br> Klik om te spelen</p>
+                <p id="Hallo"> </p>
+            </div>
+                <script>
+                    var startTime, endTime;
+                    let game_started = false;
+                
+                    document.getElementById("play_area").addEventListener("click", play_the_game)
+                    document.getElementById("play_area").addEventListener("click", reactie_van_speler);
+                    //Deze gebruiken ik om het spel te starten
+                    function play_the_game() {
+                        if (game_started === false) {
+                            console.log("functie play_area activated");
+                            document.getElementById("play_area").style.backgroundColor = "red";
+                            let random_number = Math.ceil(Math.random() * 6); // <----- maak een random getal
+                            setTimeout(wordt_groen, random_number * 1000);
+                            game_started = true;
+                        }
+                
+                    }
+                    function wordt_groen() {
+                        console.log("NU GROEN!");
+                        startTime = new Date();
+                        document.getElementById("play_area").style.backgroundColor = "green";
+                    }
+                
+                    //deze gebruiken wij om het spel te eindigen
+                    function reactie_van_speler() {
+                        if (game_started === true) {
+                            console.log("Reactie van speler activated")
+                            endTime = new Date();
+                            var timeDiff = endTime - startTime; //in ms
+                          
+                            console.log(timeDiff + " ms");
+                   
+                        }
+                    }; 
+                    
+                </script>
+               </article>
+
+              
+
+        </body>
+    </html>
